@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % preis "(Steuer, Währung, Betrag, Land)">
+<!ELEMENT Produktkatalog (Header, Artikel+)>
+<!ELEMENT Header (Beschreibung?, GenDatum, ErzeugerName)>
+<!ELEMENT Beschreibung (#PCDATA)>
+<!ELEMENT GenDatum (#PCDATA)>
+<!ELEMENT ErzeugerName (#PCDATA)>
+<!ELEMENT Artikel (kurzeBeschreibung, Hersteller?, langeBeschreibung?, Preise, sonstigeNummer*)>
+<!ATTLIST Artikel
+	ArtikelNr ID #REQUIRED
+	Zubehoer IDREFS #IMPLIED
+>
+<!ELEMENT kurzeBeschreibung (#PCDATA)>
+<!ELEMENT Hersteller (#PCDATA)>
+<!ELEMENT langeBeschreibung (#PCDATA | wichtig)*>
+<!ELEMENT wichtig (#PCDATA)>
+<!ELEMENT Preise (Netto+ | Brutto+)>
+<!ELEMENT sonstigeNummer (Art, Nummer)*>
+<!ELEMENT Art (#PCDATA)>
+<!ELEMENT Nummer (#PCDATA)>
+<!ELEMENT Netto (%preis;)>
+<!ELEMENT Brutto (%preis;)>
+<!ELEMENT Steuer (#PCDATA)>
+<!ELEMENT Währung EMPTY>
+<!ATTLIST Währung
+	währung (EUR | USD | CHF | GBP) "EUR"
+>
+<!ELEMENT Betrag (#PCDATA)>
+<!ELEMENT Land (#PCDATA)>

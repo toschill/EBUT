@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Produktkatalog SYSTEM "Z:\EBUT\DTD Lab 1.dtd">
+<Produktkatalog>
+	<Header>
+		<Beschreibung>Testzweck</Beschreibung>
+		<GenDatum>14.10.2014</GenDatum>
+		<ErzeugerName>dosickel</ErzeugerName>
+	</Header>
+	<Artikel ArtikelNr="a234">
+		<kurzeBeschreibung>testArtikel1</kurzeBeschreibung>
+		<Preise>
+			<Netto>
+				<Steuer>2%</Steuer>
+				<Währung währung="CHF"></Währung>
+				<Betrag>20</Betrag>
+				<Land>DE</Land>
+			</Netto>
+			<Netto>
+				<Steuer>5%</Steuer>
+				<Währung></Währung>
+				<Betrag>40</Betrag>
+				<Land>DE</Land>
+			</Netto>
+		</Preise>
+		<sonstigeNummer>
+			<Art>EAN</Art>
+			<Nummer>4321</Nummer>
+		</sonstigeNummer>
+		<sonstigeNummer>
+			<Art>UPC</Art>
+			<Nummer>4567</Nummer>
+		</sonstigeNummer>
+	</Artikel>
+	<Artikel ArtikelNr="a235">
+		<kurzeBeschreibung>testArtikel2</kurzeBeschreibung>
+		<Preise>
+			<Netto>
+				<Steuer>2%</Steuer>
+				<Währung währung="USD"></Währung>
+				<Betrag>20</Betrag>
+				<Land>DE</Land>
+			</Netto>
+			<Netto>
+				<Steuer>5%</Steuer>
+				<Währung></Währung>
+				<Betrag>40</Betrag>
+				<Land>DE</Land>
+			</Netto>
+		</Preise>
+		<sonstigeNummer>
+			<Art>EAN</Art>
+			<Nummer>4321</Nummer>
+		</sonstigeNummer>
+		<sonstigeNummer>
+			<Art>UPC</Art>
+			<Nummer>4567</Nummer>
+		</sonstigeNummer>
+	</Artikel>
+	<Artikel ArtikelNr="a532" Zubehoer="a234 a235 a532">
+		<kurzeBeschreibung>testArtikel3</kurzeBeschreibung>
+		<Preise>
+			<Brutto>
+				<Steuer>7%</Steuer>
+				<Währung währung="USD"></Währung>
+				<Betrag>35</Betrag>
+				<Land>USA</Land>
+			</Brutto>
+			<Brutto>
+				<Steuer>10%</Steuer>
+				<Währung></Währung>
+				<Betrag>200</Betrag>
+				<Land>DE</Land>
+			</Brutto>
+		</Preise>
+		<sonstigeNummer>
+			<Art>EAN</Art>
+			<Nummer>4321</Nummer>
+		</sonstigeNummer>
+		<sonstigeNummer>
+			<Art>UPC</Art>
+			<Nummer>4567</Nummer>
+		</sonstigeNummer>
+	</Artikel>
+</Produktkatalog>

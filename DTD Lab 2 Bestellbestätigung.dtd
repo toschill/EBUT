@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % Bestellinformationen SYSTEM "DTD Lab 2 Bestellinformationen.mod">
+<!ENTITY % preis "(Brutto, Netto)">
+<!ELEMENT Bestellbestätigung (Bestellinformationen, Bestellfuss)>
+%Bestellinformationen;
+<!ELEMENT Bestellkopf (Besteller, Datum, Rechnungsadresse?, Lieferadresse*, Haendlerinformation)>
+<!ELEMENT Haendlerinformation (%informationen;)>
+<!ELEMENT Bestellpositionen (Bestellnummer, Bestellmenge, verfuegbareMenge, Positionsgesamtpreis, Beschreibung?)>
+<!ELEMENT Positionsgesamtpreis (%preis;)>
+<!ELEMENT verfuegbareMenge (#PCDATA)>
+<!ELEMENT Bestellfuss (Gesamtpreis, Steuersumme, Währung)>
+<!ELEMENT Gesamtpreis (%preis;)>
+<!ELEMENT Brutto (#PCDATA)>
+<!ELEMENT Netto (#PCDATA)>
+<!ELEMENT Steuersumme (#PCDATA)>
+<!ELEMENT Währung (#PCDATA)>

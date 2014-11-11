@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!-- einfache Elemente --> 
+	 <xs:element name="Beschreibung" type="xs:string"/>
+	 <xs:element name="GenDatum" type="xs:date"/>
+	 <xs:element name="ErzeugerName" type="xs:string"/>
+	 <xs:element name="kurzeBeschreibung" type="xs:string"/>
+	 <xs:element name="Hersteller" type="xs:string"/>
+	 <xs:element name="wichtig" type="xs:string"/>
+	 <xs:element name="Art" type="xs:string"/>
+	 <xs:element name="Nummer" type="xs:string"/>
+	 <xs:element name="Steuer" type="xs:decimal"/>
+	 <xs:element name="Betrag" type="xs:decimal"/>
+	 <xs:element name="Land" type="xs:string"/>
+
+</xs:schema>

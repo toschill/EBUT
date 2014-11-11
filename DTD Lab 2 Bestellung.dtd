@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ENTITY % Bestellinformationen SYSTEM "DTD Lab 2 Bestellinformationen.mod">
+<!ENTITY % Bestellinformationen SYSTEM "DTD Lab 2 Bestellinformationen.dtd">
 <!ELEMENT Bestellung (Bestellinformationen)>
 <!ELEMENT Bestellkopf (Besteller, Datum, Rechnungsadresse?, Lieferadresse*)>
 <!ELEMENT Bestellpositionen (Bestellnummer, Bestellmenge, Beschreibung?)>

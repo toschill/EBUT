@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--W3C Schema erstellt mit XMLSpy v2015 (x64) (http://www.altova.com)-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="Produktkatalog">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="Artikel" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Produktkatalog" type="Produktkatalog"/>
+	<xs:complexType name="Header">
+		<xs:sequence>
+			<xs:element ref="Beschreibung" minOccurs="0"/>
+			<xs:element ref="GenDatum"/>
+			<xs:element ref="ErzeugerName"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Header" type="Header"/>
+	<xs:element name="Beschreibung" type="xs:string"/>
+	<xs:element name="GenDatum" type="xs:date"/>
+	<xs:element name="ErzeugerName" type="xs:string"/>
+	<xs:complexType name="Artikel">
+		<xs:sequence>
+			<xs:element ref="kurzeBeschreibung"/>
+			<xs:element ref="Hersteller" minOccurs="0"/>
+			<xs:element ref="langeBeschreibung" minOccurs="0"/>
+			<xs:element ref="Preise"/>
+			<xs:element ref="sonstigeNummer" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="ArtikelNr" type="xs:ID" use="required"/>
+		<xs:attribute name="Zubehoer" type="xs:IDREFS"/>
+	</xs:complexType>
+	<xs:element name="Artikel" type="Artikel"/>
+	<xs:complexType name="kurzeBeschreibung" mixed="true"/>
+	<xs:element name="kurzeBeschreibung" type="kurzeBeschreibung"/>
+	<xs:complexType name="Hersteller" mixed="true"/>
+	<xs:element name="Hersteller" type="Hersteller"/>
+	<xs:complexType name="langeBeschreibung" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="wichtig"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="langeBeschreibung" type="langeBeschreibung"/>
+	<xs:complexType name="wichtig" mixed="true"/>
+	<xs:element name="wichtig" type="wichtig"/>
+	<xs:complexType name="Preise">
+		<xs:choice>
+			<xs:element ref="Netto" maxOccurs="unbounded"/>
+			<xs:element ref="Brutto" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="Preise" type="Preise"/>
+	<xs:complexType name="sonstigeNummer">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="Art"/>
+			<xs:element ref="Nummer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="sonstigeNummer" type="sonstigeNummer"/>
+	<xs:complexType name="Art" mixed="true"/>
+	<xs:element name="Art" type="Art"/>
+	<xs:complexType name="Nummer" mixed="true"/>
+	<xs:element name="Nummer" type="Nummer"/>
+	<xs:complexType name="Netto">
+		<xs:sequence>
+			<xs:sequence>
+				<xs:element ref="Steuer"/>
+				<xs:element ref="Währung"/>
+				<xs:element ref="Betrag"/>
+				<xs:element ref="Land"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Netto" type="Netto"/>
+	<xs:complexType name="Brutto">
+		<xs:sequence>
+			<xs:sequence>
+				<xs:element ref="Steuer"/>
+				<xs:element ref="Währung"/>
+				<xs:element ref="Betrag"/>
+				<xs:element ref="Land"/>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Brutto" type="Brutto"/>
+	<xs:complexType name="Steuer" mixed="true"/>
+	<xs:element name="Steuer" type="Steuer"/>
+	<xs:complexType name="Währung">
+		<xs:attribute name="währung" default="EUR">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="CHF"/>
+					<xs:enumeration value="EUR"/>
+					<xs:enumeration value="GBP"/>
+					<xs:enumeration value="USD"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="Währung" type="Währung"/>
+	<xs:complexType name="Betrag" mixed="true"/>
+	<xs:element name="Betrag" type="Betrag"/>
+	<xs:complexType name="Land" mixed="true"/>
+	<xs:element name="Land" type="Land"/>
+</xs:schema>

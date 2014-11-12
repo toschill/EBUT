@@ -1,16 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-<!-- einfache Elemente --> 
-	 <xs:element name="Beschreibung" type="xs:string"/>
-	 <xs:element name="GenDatum" type="xs:date"/>
-	 <xs:element name="ErzeugerName" type="xs:string"/>
-	 <xs:element name="kurzeBeschreibung" type="xs:string"/>
-	 <xs:element name="Hersteller" type="xs:string"/>
-	 <xs:element name="wichtig" type="xs:string"/>
-	 <xs:element name="Art" type="xs:string"/>
-	 <xs:element name="Nummer" type="xs:string"/>
-	 <xs:element name="Steuer" type="xs:decimal"/>
-	 <xs:element name="Betrag" type="xs:decimal"/>
-	 <xs:element name="Land" type="xs:string"/>
-
+	<!-- einfache Elemente -->
+	<xs:element name="Beschreibung" type="xs:string"/>
+	<xs:element name="GenDatum" type="xs:date"/>
+	<xs:element name="ErzeugerName" type="xs:string"/>
+	<xs:element name="kurzeBeschreibung" type="xs:string"/>
+	<xs:element name="Hersteller" type="xs:string"/>
+	<xs:element name="wichtig" type="xs:string"/>
+	<xs:element name="Art" type="xs:string"/>
+	<xs:element name="Nummer" type="xs:string"/>
+	<xs:element name="Steuer" type="xs:decimal"/>
+	<xs:element name="Betrag" type="xs:decimal"/>
+	<xs:element name="Land" type="xs:string"/>
+	<xs:element name="langeBeschreibungString" type="xs:string"/>
+	<!-- komplexe Elemente -->
+	<xs:element name="Produktkatalog" type="produktkatalogType"/>
+	<xs:element name="Header" type="headerType"/>
+	<xs:element name="Artikel" type="artikelType"/>
+	<xs:element name="langeBeschreibung" type="langeBeschreibungType"/>
+	<xs:element name="Preise" type="preiseType"/>
+	<xs:element name="sonstigeNummer" type="sonstigeNummerType"/>
+	<xs:element name="Preis" type="preisType"/>
+	<xs:element name="Netto" type="nettoType"/>
+	<xs:element name="Brutto" type="bruttoType"/>
+	<!-- Attribute -->
+	<xs:attributeGroup name="Artikelbeschreibung">
+		<xs:attribute name="Artikelnummer"  type="xs:ID"/>
+		<xs:attribute name="Zubehoer" type="xs:IDREFS" use="optional" />
+	</xs:attributeGroup>
+	<xs:attribute name="Währung" type="währungType" default="EUR"/>
+	<!-- komplexe Typen -->
+	<xs:complexType name="produktkatalogType">
+		<xs:sequence>
+				<xs:element ref="Header"/>
+				<xs:element ref="Artikel" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence> 
+	</xs:complexType>
+	<xs:complexType name="headerType">
+		<xs:all>
+			<xs:element ref="Beschreibung" minOccurs="0"/>
+			<xs:element ref="GenDatum"/>
+			<xs:element ref="ErzeugerName"/>
+		</xs:all>
+	</xs:complexType> 
+	<xs:complexType name="artikelType">
+		<xs:all>
+			<xs:element ref="kurzeBeschreibung"/>
+			<xs:element ref="Hersteller" minOccurs="0"/>
+			<xs:element ref="langeBeschreibung" minOccurs="0"/>
+			<xs:element ref="Preise"/>
+			<xs:element ref="sonstigeNummer"/>
+		</xs:all>
+		<xs:attributeGroup ref="Artikelbeschreibung"/>
+	</xs:complexType>
+	<xs:complexType name="langeBeschreibungType">
+		<xs:choice>
+			<xs:element ref="langeBeschreibungString"/>
+			<xs:element ref="wichtig"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="preiseType">
+		<xs:choice>
+			<xs:element ref="Netto" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="Brutto" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="sonstigeNummerType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="Art"/>
+			<xs:element ref="Nummer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="preisType">
+		<xs:all>
+			<xs:element ref="Steuer"/>
+			<xs:element ref="Betrag"/>
+			<xs:element ref="Land"/>
+		</xs:all>
+		<xs:attribute ref="Währung"/>
+	</xs:complexType>
+	<xs:complexType name="nettoType">
+		<xs:all>
+			<xs:element ref="Preis"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="bruttoType">
+		<xs:all>
+			<xs:element ref="Preis"/>
+		</xs:all>
+	</xs:complexType>
+	<!-- simple (abgeleitete) Typen -->
+	<xs:simpleType name="währungType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="USD"/>
+			<xs:enumeration value="EUR"/>
+			<xs:enumeration value="CHF"/>
+			<xs:enumeration value="GBP"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>

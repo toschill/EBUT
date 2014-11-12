@@ -25,32 +25,32 @@
 	<xs:element name="Brutto" type="bruttoType"/>
 	<!-- Attribute -->
 	<xs:attributeGroup name="Artikelbeschreibung">
-		<xs:attribute name="Artikelnummer"  type="xs:ID"/>
-		<xs:attribute name="Zubehoer" type="xs:IDREFS" use="optional" />
+		<xs:attribute name="Artikelnummer" type="xs:ID" use="required"/>
+		<xs:attribute name="Zubehoer" type="xs:IDREFS" use="optional"/>
 	</xs:attributeGroup>
 	<xs:attribute name="Währung" type="währungType" default="EUR"/>
 	<!-- komplexe Typen -->
 	<xs:complexType name="produktkatalogType">
 		<xs:sequence>
-				<xs:element ref="Header"/>
-				<xs:element ref="Artikel" minOccurs="1" maxOccurs="unbounded"/>
-		</xs:sequence> 
+			<xs:element ref="Header"/>
+			<xs:element ref="Artikel" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="headerType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element ref="Beschreibung" minOccurs="0"/>
 			<xs:element ref="GenDatum"/>
 			<xs:element ref="ErzeugerName"/>
-		</xs:all>
-	</xs:complexType> 
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="artikelType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element ref="kurzeBeschreibung"/>
 			<xs:element ref="Hersteller" minOccurs="0"/>
 			<xs:element ref="langeBeschreibung" minOccurs="0"/>
 			<xs:element ref="Preise"/>
 			<xs:element ref="sonstigeNummer"/>
-		</xs:all>
+		</xs:sequence>
 		<xs:attributeGroup ref="Artikelbeschreibung"/>
 	</xs:complexType>
 	<xs:complexType name="langeBeschreibungType">
@@ -72,22 +72,22 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="preisType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element ref="Steuer"/>
 			<xs:element ref="Betrag"/>
 			<xs:element ref="Land"/>
-		</xs:all>
+		</xs:sequence>
 		<xs:attribute ref="Währung"/>
 	</xs:complexType>
 	<xs:complexType name="nettoType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element ref="Preis"/>
-		</xs:all>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="bruttoType">
-		<xs:all>
+		<xs:sequence>
 			<xs:element ref="Preis"/>
-		</xs:all>
+		</xs:sequence>
 	</xs:complexType>
 	<!-- simple (abgeleitete) Typen -->
 	<xs:simpleType name="währungType">

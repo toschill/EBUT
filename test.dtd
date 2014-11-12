@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DTD erstellt mit XMLSpy v2015 (x64) (http://www.altova.com)-->
+<!--element and attribute declarations-->
+<!ELEMENT Beschreibung (#PCDATA)>
+<!ELEMENT GenDatum (#PCDATA)>
+<!ELEMENT ErzeugerName (#PCDATA)>
+<!ELEMENT kurzeBeschreibung (#PCDATA)>
+<!ELEMENT Hersteller (#PCDATA)>
+<!ELEMENT wichtig (#PCDATA)>
+<!ELEMENT Art (#PCDATA)>
+<!ELEMENT Nummer (#PCDATA)>
+<!ELEMENT Steuer (#PCDATA)>
+<!ELEMENT Betrag (#PCDATA)>
+<!ELEMENT Land (#PCDATA)>
+<!ELEMENT langeBeschreibungString (#PCDATA)>
+<!ELEMENT Produktkatalog (Header, Artikel+)>
+<!ELEMENT Header (Beschreibung?, GenDatum, ErzeugerName)>
+<!ELEMENT Artikel (kurzeBeschreibung, Hersteller?, langeBeschreibung?, Preise, sonstigeNummer)>
+<!ATTLIST Artikel
+	Artikelnummer ID #IMPLIED
+	Zubehoer IDREFs #IMPLIED
+>
+<!ELEMENT langeBeschreibung (langeBeschreibungString | wichtig)>
+<!ELEMENT Preise (Netto+ | Brutto+)>
+<!ELEMENT sonstigeNummer (Art, Nummer)*>
+<!ELEMENT Preis (Steuer, Betrag, Land)>
+<!ATTLIST Preis
+	Währung (USD | EUR | CHF | GBP) "EUR"
+>
+<!ELEMENT Netto (Preis)>
+<!ELEMENT Brutto (Preis)>

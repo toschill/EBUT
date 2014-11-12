@@ -1,0 +1,38 @@
+grammar{
+	start=	
+		element Produktkatalog
+						{ element Header
+									{ element Beschreibung { text }?, 
+									  element GenDatum {text},
+									  element ErzeugerName {text}
+									}
+						  element Artikel
+									{ element Hersteller {text}?,
+									  element langeBeschreibung 
+												{ (element wichtig {text}|
+																  {text})*
+												}?,
+									  element kurzeBeschreibung {text},
+									  element Preise
+												{ element Netto 
+															{preis}+,
+												  element Brutto
+															{preis}+
+												},
+									  element sonstigeNummer 
+												{
+													(element Art {text},
+													element Nummer {text})*
+												}*,
+									  element ArtikelNummer {ID},				#FALSCH?
+									  element Zubehoer {IDREFS}					#FALSCH?			
+									}  
+	preis=
+		element Steuer {text},
+		element Betrag {text},
+		element Land {text},
+		element Waehrung 
+					{
+						element waehrung {"EUR"|"GBP"|"USD"|"CHF"} #DEFAULT WERT?	
+					}
+}

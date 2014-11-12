@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element name="Produktkatalog" xmlns:rng="http://relaxng.org/ns/structure/1.0">
+	<rng:grammar>
+		<rng:start>
+			<rng:element name="Header">
+				<rng:optional>
+					<rng:element name="Beschreibung"> <text/> </rng:element> 
+				</rng:optional>
+				<rng:element name="GenDatum"> <text/> </rng:element>
+				<rng:element name="ErzeugerName"> <text/> </rng:element>
+			</rng:element>
+			<rng:oneOrMore>
+				<rng:element name="Artikel">
+					<rng:optional>
+						<rng:element name="Hersteller"> <text/> </rng:element>
+						<rng:element name="langeBeschreibung">
+							<rng:zeroOrMore>
+								 <rng:choice> 	
+						 			<rng:element name="wichtig"> <text/> </rng:element>
+						 			<text/>
+								</rng:choice> 
+							</rng:zeroOrMore>
+						</rng:element>
+					</rng:optional>
+					<rng:element name="kurzeBeschreibung"> <text/> </rng:element>
+					<rng:element name="Preise"> 
+						<rng:choice>
+							<rng:oneOrMore>
+								<rng:elemente name="Brutto">
+									<rng:ref name="Preis"/>
+								</rng:elemente>
+							</rng:oneOrMore>
+							<rng:oneOrMore>
+								<rng:elemente name="Netto">
+									<rng:ref name="Preis"/>
+								</rng:elemente>
+							</rng:oneOrMore>
+						</rng:choice>
+					</rng:element>
+					<rng:zeroOrMore>
+						<rng:element name="sonstigeNummer">
+							<rng:zeroOrMore>
+								<rng:element name="Art"><text/></rng:element>
+								<rng:element name="Nummer"><text/></rng:element>
+							</rng:zeroOrMore>
+						</rng:element>
+					</rng:zeroOrMore>
+					<rng:attribute name="ArtikelNummer"><rng:ID/></rng:attribute> <!--Nicht sicher ob richtig-->
+					<rng:attribute name="Zubehör"><rng:optional><rng:IDREFS/></rng:optional></rng:attribute> <!--Nicht sicher ob richtig-->
+				</rng:element>
+			</rng:oneOrMore>
+		</rng:start>
+		
+		<!-- Interne Parameter Entität?-->
+		<rng:define name="Preis">
+			<rng:element name="Steuer"> <text/> </rng:element>
+			<rng:element name="Betrag"> <text/> </rng:element>
+			<rng:element name="Land"> <text/> </rng:element>
+			<rng:element name="Waehrung">
+				 <rng:attribute name="waehrung" rng:defaultValue="EUR"> <!-- Eventuell im Annotations Namensraum -->
+				 	 <rng:choice>
+				 	 	 <rng:value> EUR </rng:value>
+				 	 	 <rng:value> GBP </rng:value>
+				 	 	 <rng:value> CHF </rng:value>
+				 	 	 <rng:value> USD </rng:value>
+				 	 </rng:choice>
+				 </rng:attribute> 
+			</rng:element>
+		</rng:define>
+	</rng:grammar>
+</element>

@@ -1,0 +1,10 @@
+
+1)/child::BMECAT/child::T_NEW_CATALOG/child::ARTICLE
+2)/child::BMECAT/child::T_NEW_CATALOG/child::ARTICLE[ARTICLE_DETAILS/child::DESCRIPTION_SHORT="Bleistift 4H"]
+
+3a)/descendant::ARTICLE[SUPPLIER_AID="A3333"]/child::ARTICLE_PRICE_DETAILS/child::ARTICLE_PRICE[TERRITORY="DE"]/child::PRICE_AMOUNT
+3b)/child::BMECAT/child::T_NEW_CATALOG/child::ARTICLE[SUPPLIER_AID="A3333"]/child::ARTICLE_PRICE_DETAILS/child::ARTICLE_PRICE[TERRITORY="DE"]/child::PRICE_AMOUNT
+
+4)/descendant::ARTICLE_REFERENCE[attribute::type="accessories"]/child::ART_ID_TO
+
+5)/descendant::ARTICLE[SUPPLIER_AID=(/descendant::ARTICLE[SUPPLIER_AID="A3333"]/ARTICLE_REFERENCE[attribute::type="accessories"]/ART_ID_TO)]

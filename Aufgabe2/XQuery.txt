@@ -1,0 +1,2 @@
+for $x in doc("Z:\EBUT\Aufgabe2\Material_Aufgabe_2_Lab_EBUT_WS1415\Vereinfachtes_BMEcat1.2_Format\articles_bmecat_new_catalog_1_2_simple_V0.96.xml")//ARTICLE return $x
+for $i in doc("Z:\EBUT\Aufgabe2\Material_Aufgabe_2_Lab_EBUT_WS1415\Vereinfachtes_BMEcat1.2_Format\articles_bmecat_new_catalog_1_2_simple_V0.96.xml")/BMECAT/T_NEW_CATALOG/ARTICLE where $i/ARTICLE_DETAILS/DESCRIPTION_SHORT="Bleistift 4H" return $i
